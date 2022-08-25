@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-xt82cs6x5inpyuxrcz6jfe&y#oyl2&v!efy8@z5sgg@t&yc#5-
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000']
+# CSRF_COOKIE_SECURE = True
 
 
 # Application definition
@@ -53,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
+
 
 ROOT_URLCONF = 'flute_app_backend.urls'
 

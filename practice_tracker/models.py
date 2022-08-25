@@ -11,6 +11,8 @@ class Performer(models.Model):
 
 class Practice_session(models.Model):
     length = models.PositiveIntegerField(default=0)
+    date = models.DateField(null=True, blank=True, auto_now_add=True)
+    time = models.TimeField(null=True, blank=True, auto_now_add=True)
 
     # Foreign Key
     performer = models.ForeignKey(Performer, on_delete=models.CASCADE)
