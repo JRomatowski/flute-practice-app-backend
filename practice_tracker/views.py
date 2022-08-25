@@ -1,10 +1,24 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from .models import Performer
+from .models import Performer, Practice_session
 
 # Create your views here.
 
+def home(request):
+    return HttpResponse("Home. /performers for list of performers. /history for list of session history")
 
+def performers_index(request):
+    # if request.method == 'GET':
+    #     performers = Performer.objects.all()
+    #     # return JsonResponse({"performer": performers })
+    #     print("test")
+    #     return HttpResponse("Test", request)
+    performers = list(Performer.objects.values())
+    return JsonResponse({"performers": performers})
+
+def history_index(request):
+    history = list(Practice_session.objects.values())
+    return JsonResponse({"Practice_sessions": history})
 
 # if request.method == 'GET':
 #     # THIS DOESN'T WORK YET
@@ -31,12 +45,3 @@ from .models import Performer
 #     cat = get_object_or_404(Cat, id=cat_id)
 #     cat.delete()
 #     return HttpResponse("Deleted", status=204)
-
-# def performers_index(request):
-#     if request.method == 'GET':
-#         performers = Performer.objects.all()
-#         # return JsonResponse({"performer": performers })
-#         print("test")
-#         return HttpResponse("Test")
-
-# def practice_sessions_history(request, performer_id)
