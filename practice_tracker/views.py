@@ -16,7 +16,6 @@ def performers_index(request):
 @csrf_exempt
 def history_index(request):
     history = list(Practice_session.objects.values())
-
     if request.method == 'GET':
         return JsonResponse({"practice_sessions": history})
     if request.method == 'POST':
