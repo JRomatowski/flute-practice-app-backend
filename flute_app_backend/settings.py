@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'practice_tracker',
-
+    'practice_tracker'
 ]
 
 MIDDLEWARE = [
