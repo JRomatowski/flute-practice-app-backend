@@ -37,7 +37,9 @@ def history_index(request):
 def session_information(request, session_id):
     if request.method == "GET":
         session=Practice_session.objects.get(id=session_id)
-        return JsonResponse({session})
+        print(session.length)
+        return JsonResponse({"practice_sessions": session.length})
+        # return HttpResponse(session)
     if request.method == "DELETE":
         session=Practice_session.objects.get(id=session_id)
         session.delete()
