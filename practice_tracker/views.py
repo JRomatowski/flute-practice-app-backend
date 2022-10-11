@@ -11,7 +11,13 @@ def home(request):
 
 def performers_index(request):
     performers = list(Performer.objects.values())
-    return JsonResponse({"performers": performers})
+    if request.method == 'GET':
+        return JsonResponse({"performers": performers})
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        body2 = body['performers']
+
 
 @csrf_exempt
 def history_index(request):
@@ -29,6 +35,9 @@ def history_index(request):
 
 @csrf_exempt
 def session_information(request, session_id):
+    if request.method == "GET":
+        session=Practice_session.objects.get(id=session_id)
+        return JsonResponse({session})
     if request.method == "DELETE":
         session=Practice_session.objects.get(id=session_id)
         session.delete()
