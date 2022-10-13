@@ -38,7 +38,7 @@ def session_information(request, session_id):
     if request.method == "GET":
         session=Practice_session.objects.get(id=session_id)
         # print(session.length)
-        return JsonResponse({"practice_sessions": session.length})
+        return JsonResponse({"practice_sessions": session.length}, safe=False)
     if request.method == "DELETE":
         session=Practice_session.objects.get(id=session_id)
         session.delete()
