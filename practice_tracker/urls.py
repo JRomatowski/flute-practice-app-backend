@@ -6,4 +6,5 @@ urlpatterns = [
     path('performers/', views.performers_index, name='performers'),
     path('history/', views.history_index),
     path('history/<int:session_id>/', views.session_information, name='singleSession'),
+    path('history/edit/<int:session_id>/<int:new_length>/', views.session_information_patch, name='patchSession')
 ]

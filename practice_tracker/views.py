@@ -37,10 +37,19 @@ def history_index(request):
 def session_information(request, session_id):
     if request.method == "GET":
         session=Practice_session.objects.get(id=session_id)
-        return JsonResponse({session})
+        # print(session.length)
+        return JsonResponse({"practice_sessions": session.length}, safe=False)
     if request.method == "DELETE":
         session=Practice_session.objects.get(id=session_id)
         session.delete()
     return HttpResponse('Session History by ID')
+
+@csrf_exempt
+def session_information_patch(request, session_id, new_length):
+    if request.method == "PATCH":
+        session=Practice_session.objects.get(id=session_id)
+        session.length = new_length
+        session.save()
+        return HttpResponse('Saved new Length')
 
 
