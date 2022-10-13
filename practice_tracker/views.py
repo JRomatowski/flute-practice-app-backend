@@ -47,7 +47,7 @@ def session_information(request, session_id):
 @csrf_exempt
 def session_information_patch(request, session_id, new_length):
     if request.method == "PATCH":
-        session=Practice_session.objects.get(id=session_id)
+        session=Practice_session.objects.get(id=session_id, length=new_length)
         session.length = new_length
         session.save()
         return HttpResponse('Saved new Length')
